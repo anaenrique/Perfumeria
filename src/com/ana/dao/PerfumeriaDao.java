@@ -64,13 +64,12 @@ public class PerfumeriaDao {
 			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// TODO Auto-generated method stub
 				Usuario u = new Usuario
-	
 						(rs.getString(1),
-						rs.getString(2),
-						rs.getString(3),
-						rs.getString(4),
-						rs.getString(5)
-						);
+								rs.getString(2),
+								rs.getString(3),
+								rs.getString(4),
+								rs.getString(5));
+						;
 					    
 				return u;
 			}
@@ -96,7 +95,7 @@ public class PerfumeriaDao {
 	}
 	
 	public int editarProducto(Productos p) {
-		return template.update("update vegetales set nombre=?, descripcion=?, imagen=?, categoria=?, precio=? where id_producto=?",
+		return template.update("update productos set nombre=?, descripcion=?, imagen=?, categoria=?, precio=? where id_producto=?",
 								p.getNombre(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio(),p.getId_producto());
 	}
 
@@ -106,12 +105,12 @@ public class PerfumeriaDao {
 	}
 
 	public int registrarUsuario(Usuario user) {
-		return  template.update("insert into user(usuario, nombre, contrasenia, email) values (?,?,?,?)",
+		return  template.update("insert into usuario(usuario, nombre, contrasenia, email) values (?,?,?,?)",
 				user.getUsuario(), user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
 	}
 	
 	public int modificarUsuario(Usuario user) {
-		return  template.update("update user set usuario=?, nombre=?, contrasenia=?, email=? where usuario=?",
+		return  template.update("update usuarior set usuario=?, nombre=?, contrasenia=?, email=? where usuario=?",
 				user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
 	}
 
