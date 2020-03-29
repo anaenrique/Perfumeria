@@ -7,6 +7,6 @@
 <title>PERFUMERIA</title>
 </head>
 <body>
-	<% response.sendRedirect("Perfumeria"); %>
+	<% response.sendRedirect("todaPerfumeria"); %>
 </body>
 </html>

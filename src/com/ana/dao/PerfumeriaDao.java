@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-//import com.ana.modelo.Carousel;
+import com.ana.modelo.Carousel;
 import com.ana.modelo.Usuario;
 import com.ana.modelo.Productos;
 
@@ -45,4 +45,74 @@ public class PerfumeriaDao {
 		}
 		});
 	}
+	
+	public List<Carousel> listarCarousel() {
+		return template.query("select * from carousel", new RowMapper<Carousel>() {@Override
+			public Carousel mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				Carousel c = new Carousel(rs.getInt(1),
+										rs.getString(2),
+										rs.getString(3));			
+				return c;
+				}
+			});
+	}
+	
+	public Usuario iniciarSesion(String username, String password) {
+		List<Usuario> users = template.query("select * from usuario where usuario='"+username+"' and clave='"+password+"'", new RowMapper<Usuario>() {
+			@Override
+			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				Usuario u = new Usuario
+	
+						(rs.getString(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5)
+						);
+					    
+				return u;
+			}
+		} );
+		
+		if(users.isEmpty()) {
+			return null;
+		}
+		else {
+			return users.get(0);
+		}
+	}
+	
+	public int eliminarProducto(int id_producto) {
+		// TODO Auto-generated method stub
+		String sql = "delete from vegetales where id=" + id_producto + "";
+		return template.update(sql);
+	}
+	
+	public Productos buscarProducto(int id_producto) {
+		String sql = "select * from productos where id_producto=?";
+		return template.queryForObject(sql, new Object[] { id_producto }, new BeanPropertyRowMapper<Productos>(Productos.class));
+	}
+	
+	public int editarProducto(Productos p) {
+		return template.update("update vegetales set nombre=?, descripcion=?, imagen=?, categoria=?, precio=? where id_producto=?",
+								p.getNombre(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio(),p.getId_producto());
+	}
+
+	public int insertarProducto(Productos p) {
+		return  template.update("insert into productos(nombre,descripcion,imagen,categoria,precio) values (?,?,?,?,?)",
+								p.getNombre(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio());
+	}
+
+	public int registrarUsuario(Usuario user) {
+		return  template.update("insert into user(usuario, nombre, contrasenia, email) values (?,?,?,?)",
+				user.getUsuario(), user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
+	}
+	
+	public int modificarUsuario(Usuario user) {
+		return  template.update("update user set usuario=?, nombre=?, contrasenia=?, email=? where usuario=?",
+				user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
+	}
+
 }
