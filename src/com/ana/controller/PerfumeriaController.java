@@ -138,8 +138,7 @@ public class PerfumeriaController {
 	
 	@RequestMapping(value="editarProducto/{id_producto}", method=RequestMethod.GET)
 	public ModelAndView editarProducto(@PathVariable int id_producto) {
-		System.out.println("ID: " + id_producto);
-		
+		System.out.println("Id_producto: " + id_producto);
 		ModelAndView modelo = null;
 		
 		if(id_producto==-1) {
@@ -190,7 +189,7 @@ public class PerfumeriaController {
 			session.setAttribute("carrito", carrito);
 		}
 		
-		return new ModelAndView("redirect:/todaPerffumeria");
+		return new ModelAndView("redirect:/todaPerfumeria");
 	}
 	
 	@RequestMapping(value="verCarrito")
