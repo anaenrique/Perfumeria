@@ -35,7 +35,7 @@
 <body>
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(149, 133, 163);">
 		<div class="container">
 			<a class="navbar-brand" href="/Perfumeria/todaPerfumeria">Perfumeria´s online</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"

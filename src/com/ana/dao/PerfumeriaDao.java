@@ -59,7 +59,7 @@ public class PerfumeriaDao {
 	}
 	
 	public Usuario iniciarSesion(String username, String password) {
-		List<Usuario> users = template.query("select * from usuario where usuario='"+username+"' and clave='"+password+"'", new RowMapper<Usuario>() {
+		List<Usuario> users = template.query("select * from usuario where usuario='"+username+"' and contrasenia='"+password+"'", new RowMapper<Usuario>() {
 			@Override
 			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// TODO Auto-generated method stub
@@ -85,7 +85,7 @@ public class PerfumeriaDao {
 	
 	public int eliminarProducto(int id_producto) {
 		// TODO Auto-generated method stub
-		String sql = "delete from vegetales where id=" + id_producto + "";
+		String sql = "delete from productos where id_producto=" + id_producto + "";
 		return template.update(sql);
 	}
 	

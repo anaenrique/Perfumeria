@@ -16,27 +16,27 @@
 	<div id="login">
         <h3 class="text-center text-white pt-5">Acceso usuario</h3>
         <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-row a" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="acceder" method="post">
-                            <h3 class="text-center text-info">Login</h3>
+                            <h3 class="text-center text-info">Iniciar Sesión</h3>
                             <c:if test="${error!=null}">
                             <div class="alert alert-danger" role="alert">${error}</div>
                             </c:if>
                             <div class="form-group">
-                                <label for="username" class="text-info">Usuario:</label><br>
+                                <label for="username" class="text-info">Usuario</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
+                                <label for="password" class="text-info">Contraseña</label><br>
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group text-center">
                                 <input type="submit" name="submit" value="Aceptar" class="btn btn-info btn-md" value="submit">
                             </div>
                             <div class="form-group text-center">
-                               	<a name="volver" id="volver" class="btn btn-primary" href="/Perfumeria/todaPerfumeria" role="button">Volver</a>
+                               	<a name="volver" id="volver" class="btn btn-info btn-md" href="/Perfumeria/todaPerfumeria" role="button">Volver</a>
                             </div>
                         </form>
                     </div>

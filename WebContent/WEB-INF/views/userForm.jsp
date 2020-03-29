@@ -14,45 +14,47 @@
 </head>
 <body>
 	<div class="container">
-		<h4>${titulo}</h4>
+	<h4>${titulo}</h4>
 	<c:if test="${sessionScope.usuario == null}" >
 	<c:if test="${error!=null}">
-             <div class="alert alert-danger" role="alert">${error}</div>
-     </c:if>
+    <div class="alert alert-danger" role="alert">${error}</div>
+    </c:if>
+    <div id="login-row" class="row justify-content-center align-items-center">
+    <div id="login-column" class="col-md-6">
+    <div id="login-box" class="col-md-12">
 	<form:form commandName="user" method="post" action="/Perfumeria/registrarse">
-			
-		  <div class="form-row">
-		    <div class="form-group col-md-6">
+		    <div class="form-group">
 		      <label>Usuario:</label>
 		      <form:input path="usuario"/>
 		      <form:errors path="usuario" cssClass="error" style="color:red" />
 		    </div>
-		    <div class="form-group col-md-6">
+		    <div class="form-group">
 		      <label>Contraseña:</label>
 		      <form:input path="contrasenia"/>
 		      <form:errors path="contrasenia" cssClass="error" style="color:red" />
 		    </div>
-		  </div>
-		  <div class="form-row">
-		    <div class="form-group col-md-6">
+		    <div class="form-group">
 		    <label>Email:</label>
 		      <form:input path="email"/>
 		      <form:errors path="email" cssClass="error" style="color:red" />
 		  </div>
-		  <div class="form-group col-md-6">
+		  <div class="form-group">
 		    <label>Nombre:</label>
 		      <form:input path="nombre"/>
 		      <form:errors path="nombre" cssClass="error" style="color:red" />
 		  </div>
-		  </div>
-		  <button type="submit" class="btn btn-primary">Enviar</button>
+		  <button type="submit" class="btn btn-info btn-md">Enviar</button>
+		  <a href="/Perfumeria/todaPerfumeria" class="btn btn-info btn-md" role="button" >Volver a la Tienda</a>
 	</form:form>
+	</div>
+	</div>
+	</div>
 	</c:if>
 	
 	<c:if test="${sessionScope.usuario != null}" >
 	<form:form commandName="user" method="post" action="/Fruteria/modificarUsuario">
 	
-		  <div class="form-row">
+		  <div class="form-row row justify-content-center align-items-center">
 		    <div class="form-group col-md-6">
 		      <label>Usuario:</label>
 		      <form:input path="usuario" readonly="true" />
@@ -80,7 +82,7 @@
 	</form:form>
 	</c:if>
 	<br />
-	<a href="/Perfumeria/todaPerfumeria" class="btn btn-outline-primary" role="button" >Volver a la Tienda</a>
+	<!--  a href="/Perfumeria/todaPerfumeria" class="btn btn-outline-primary" role="button" >Volver a la Tienda</a>-->
 	</div>
 	
 </body>
