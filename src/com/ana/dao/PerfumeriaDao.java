@@ -45,6 +45,23 @@ public class PerfumeriaDao {
 		}
 		});
 	}
+	public List<Productos> listarSexo(String sexo){
+		return template.query("select * from productos where sexo='"+sexo+"'", new RowMapper<Productos>() {@Override
+			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				Productos p = new Productos(rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getDouble(5),
+						rs.getString(6),
+						rs.getString(7),
+						rs.getInt(8),
+						rs.getInt(9));			
+				return p;
+				}
+			});
+	}
 	
 	public List<Carousel> listarCarousel() {
 		return template.query("select * from carousel", new RowMapper<Carousel>() {@Override

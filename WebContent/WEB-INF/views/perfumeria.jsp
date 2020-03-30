@@ -59,7 +59,7 @@
 						<li class="nav-item"><a class="nav-link" href="/Perfumeria/login">Iniciar Sesión</a></li>
 						<li class="nav-item"><a class="nav-link" href="/Perfumeria/irUserForm">Registrarse</a></li>
 					</c:if>
-					
+					<c:if test="${sessionScope.username == 'admin'}">
 					<li class="nav-item">
 						<a class="nav-link" href="/Perfumeria/verCarrito">
 							<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
@@ -67,6 +67,7 @@
 								Carrito(${fn:length(sessionScope.carrito)})
 						</a>
 					</li>
+					</c:if>
 					
 				</ul>
 			</div>
@@ -82,10 +83,10 @@
 
 				<h1 class="my-4">PERFUMERIA</h1>
 				<div class="list-group">
-					<a href="/Perfumeria/todaPerfumeria" class="list-group-item">Todo</a> <a
-						href="/Perfumeria/verCategoria/Hombres" class="list-group-item">Hombres</a>
+					<a href="/Perfumeria/todaPerfumeria" class="list-group-item">Todo</a> 
+					<a href="/Perfumeria/verCategoria/Hombres" class="list-group-item">Hombres</a>
 					<a href="/Perfumeria/verCategoria/Mujeres" class="list-group-item">Mujeres</a>
-					<a href="/Perfumeria/verCategoria/Legumbre" class="list-group-item"></a>
+					
 				</div>
 
 			</div>

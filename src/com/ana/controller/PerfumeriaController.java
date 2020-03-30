@@ -54,15 +54,15 @@ public class PerfumeriaController {
 		return modelo;
 	}
 	
-	/*@RequestMapping(value="/verCategoria/{categoria}")
-	public ModelAndView mostrarCategoria(@PathVariable String categoria) {
-		List<Vegetal> listaC = dao.listarCategoria(categoria);
-		ModelAndView modelo = new ModelAndView("fruteria");
-		System.out.println("Metodo mostrarCategoria de FruteriaController, categoria: " + categoria);
-		modelo.addObject("listaV", listaC);
+	@RequestMapping(value="/verCategoria/{sexo}")
+	public ModelAndView mostrarSexo(@PathVariable String sexo) {
+		List<Productos> listaC = dao.listarSexo(sexo);
+		ModelAndView modelo = new ModelAndView("perfumeria");
+		System.out.println("Metodo mostrarCategoria de PerfumeriaController, sexo: " + sexo);
+		modelo.addObject("listaP", listaC);
 		modelo.addObject("listaCarousel", listaCarousel);
 		return modelo;
-	}*/
+	}
 	
 	@RequestMapping(value="login")
 	public String irLogin() {
