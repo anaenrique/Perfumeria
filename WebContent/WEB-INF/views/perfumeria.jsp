@@ -59,7 +59,7 @@
 						<li class="nav-item"><a class="nav-link" href="/Perfumeria/login">Iniciar Sesión</a></li>
 						<li class="nav-item"><a class="nav-link" href="/Perfumeria/irUserForm">Registrarse</a></li>
 					</c:if>
-					<c:if test="${sessionScope.username == 'admin'}">
+					
 					<li class="nav-item">
 						<a class="nav-link" href="/Perfumeria/verCarrito">
 							<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
@@ -67,7 +67,7 @@
 								Carrito(${fn:length(sessionScope.carrito)})
 						</a>
 					</li>
-					</c:if>
+					
 					
 				</ul>
 			</div>

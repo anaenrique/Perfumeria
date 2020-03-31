@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ana.dao.PerfumeriaDao;
 import com.ana.modelo.Productos;
 import com.ana.modelo.Usuario;
-import com.ana.modelo.Carousel;
+
 
 
 @Controller
@@ -38,7 +38,7 @@ public class PerfumeriaController {
 		@Autowired
 		JavaMailSender emailSender;
 		
-		private static List<Carousel> listaCarousel;
+		
 		//private List<Vegetal> carrito = new ArrayList<Vegetal>();
 		
 		private Usuario usuario;
@@ -47,7 +47,7 @@ public class PerfumeriaController {
 	public ModelAndView mostrarTodo() {
 		List<Productos> listaP = dao.listarProductos();
 		//listaCarousel = dao.listarCarousel();
-		ModelAndView modelo = new ModelAndView("perfumeria");
+		ModelAndView modelo = new ModelAndView("index");
 		System.out.println("Metodo mostrarTodo de PerfumeriaController");
 		modelo.addObject("listaP", listaP);
 		//modelo.addObject("listaCarousel", listaCarousel);
@@ -57,10 +57,9 @@ public class PerfumeriaController {
 	@RequestMapping(value="/verCategoria/{sexo}")
 	public ModelAndView mostrarSexo(@PathVariable String sexo) {
 		List<Productos> listaC = dao.listarSexo(sexo);
-		ModelAndView modelo = new ModelAndView("perfumeria");
+		ModelAndView modelo = new ModelAndView("index");
 		System.out.println("Metodo mostrarCategoria de PerfumeriaController, sexo: " + sexo);
 		modelo.addObject("listaP", listaC);
-		modelo.addObject("listaCarousel", listaCarousel);
 		return modelo;
 	}
 	

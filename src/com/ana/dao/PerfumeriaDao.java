@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.ana.modelo.Carousel;
+
 import com.ana.modelo.Usuario;
 import com.ana.modelo.Productos;
 
@@ -63,17 +63,7 @@ public class PerfumeriaDao {
 			});
 	}
 	
-	public List<Carousel> listarCarousel() {
-		return template.query("select * from carousel", new RowMapper<Carousel>() {@Override
-			public Carousel mapRow(ResultSet rs, int rowNum) throws SQLException {
-				// TODO Auto-generated method stub
-				Carousel c = new Carousel(rs.getInt(1),
-										rs.getString(2),
-										rs.getString(3));			
-				return c;
-				}
-			});
-	}
+	
 	
 	public Usuario iniciarSesion(String username, String password) {
 		List<Usuario> users = template.query("select * from usuario where usuario='"+username+"' and contrasenia='"+password+"'", new RowMapper<Usuario>() {

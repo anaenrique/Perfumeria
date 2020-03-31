@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html>
-<link rel="/views/css/estilo.css">
 <head>
 <meta charset="ISO-8859-1">
 <title>PERFUMERIA</title>
