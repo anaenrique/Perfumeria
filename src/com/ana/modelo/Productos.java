@@ -3,6 +3,7 @@ package com.ana.modelo;
 public class Productos {
 	
 	private int id_producto;
+	private String marca;
 	private String nombre;
 	private String descripcion;
 	private String imagen;
@@ -16,10 +17,11 @@ public class Productos {
 		
 	}
 
-	public Productos(int id_producto, String nombre, String descripcion, String imagen, double precio, String sexo,
+	public Productos(int id_producto, String marca,String nombre, String descripcion, String imagen, double precio, String sexo,
 			String categoria, int stock, int total_vendido) {
 		
 		this.id_producto = id_producto;
+		this.marca = marca;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -36,6 +38,13 @@ public class Productos {
 
 	public void setId_producto(int id_producto) {
 		this.id_producto = id_producto;
+	}
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 	public String getNombre() {

@@ -63,6 +63,15 @@ public class PerfumeriaController {
 		return modelo;
 	}
 	
+	@RequestMapping(value="/verSexoCategoria/{sexo}/{categoria}")
+	public ModelAndView mostrarCategoria(@PathVariable String sexo, String categoria) {
+		List<Productos> listaCS = dao.listarCategoriaSexo(sexo,categoria);
+		ModelAndView modelo = new ModelAndView("index");
+		System.out.println("Metodo mostrarCategoria de PerfumeriaController, sexo y categoria: " + sexo + categoria);
+		modelo.addObject("listaP", listaCS);
+		return modelo;
+	}
+	
 	@RequestMapping(value="login")
 	public String irLogin() {
 		return "login";

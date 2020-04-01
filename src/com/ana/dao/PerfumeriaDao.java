@@ -32,14 +32,15 @@ public class PerfumeriaDao {
 			// TODO Auto-generated method stub
 			Productos p = new Productos 
 					(rs.getInt(1),
-					rs.getString(2),
+				    rs.getString(2),
 					rs.getString(3),
 					rs.getString(4),
-					rs.getDouble(5),
-					rs.getString(6),
+					rs.getString(5),
+					rs.getDouble(6),
 					rs.getString(7),
-					rs.getInt(8),
-					rs.getInt(9));
+					rs.getString(8),
+					rs.getInt(9),
+					rs.getInt(10));
 					
 			return p;
 		}
@@ -50,14 +51,34 @@ public class PerfumeriaDao {
 			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// TODO Auto-generated method stub
 				Productos p = new Productos(rs.getInt(1),
-						rs.getString(2),
+					    rs.getString(2),
 						rs.getString(3),
 						rs.getString(4),
-						rs.getDouble(5),
-						rs.getString(6),
+						rs.getString(5),
+						rs.getDouble(6),
 						rs.getString(7),
-						rs.getInt(8),
-						rs.getInt(9));			
+						rs.getString(8),
+						rs.getInt(9),
+						rs.getInt(10));	
+				return p;
+				}
+			});
+	}
+	
+	public List<Productos> listarCategoriaSexo(String sexo, String categoria){
+		return template.query("select * from productos where sexo='"+sexo+"' and categoria='"+categoria+"'", new RowMapper<Productos>() {@Override
+			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				Productos p = new Productos(rs.getInt(1),
+					    rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getDouble(6),
+						rs.getString(7),
+						rs.getString(8),
+						rs.getInt(9),
+						rs.getInt(10));	
 				return p;
 				}
 			});
