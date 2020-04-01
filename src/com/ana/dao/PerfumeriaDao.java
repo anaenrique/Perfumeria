@@ -79,6 +79,7 @@ public class PerfumeriaDao {
 						rs.getString(8),
 						rs.getInt(9),
 						rs.getInt(10));	
+				System.out.println("hola");
 				return p;
 				}
 			});
