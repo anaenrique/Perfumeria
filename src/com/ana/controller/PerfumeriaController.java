@@ -64,9 +64,9 @@ public class PerfumeriaController {
 	}
 	
 	@RequestMapping(value="/verSexoCategoria/{sexo}/{categoria}")
-	public ModelAndView mostrarCategoria(@PathVariable String sexo, String categoria) {
+	public ModelAndView mostrarCategoria(@PathVariable String sexo, @PathVariable String categoria) {
 		List<Productos> listaCS = dao.listarCategoriaSexo(sexo,categoria);
-		ModelAndView modelo = new ModelAndView("index");
+		ModelAndView modelo = new ModelAndView("categorias");
 		System.out.println("Metodo mostrarCategoria de PerfumeriaController, sexo y categoria: " + sexo + categoria);
 		modelo.addObject("listaP", listaCS);
 		return modelo;
@@ -103,7 +103,7 @@ public class PerfumeriaController {
 			@RequestParam("password") String password,
 			HttpSession session) {
 		
-		List<Productos> listaP = dao.listarProductos();
+		//List<Productos> listaP = dao.listarProductos();
 		
 		usuario = dao.iniciarSesion(username, password);
 		ModelAndView modelo = null;
@@ -122,7 +122,7 @@ public class PerfumeriaController {
 		}
 		else {
 			modelo = new ModelAndView("login");
-			String error = "Datos de inicio de sesión incorrectos";
+			String error = "Los datos que ha introducido son incorrectos,inténtelo de nuevo";
 			modelo.addObject("error", error);
 		}
 		
@@ -269,8 +269,8 @@ public class PerfumeriaController {
 		return new ModelAndView("redirect:/todaPerfumeria");
 	}
 	
-	@RequestMapping(value="irUserForm")
-	public String mostrarUserForm(Model modelo, HttpSession session) {
+	@RequestMapping(value="irRegistroUsuario")
+	public String mostrarRegistroUsuario(Model modelo, HttpSession session) {
 		Usuario user = new Usuario();
 		String titulo = "Formulario de registro";
 		if(session.getAttribute("usuario")!=null) {
@@ -279,16 +279,16 @@ public class PerfumeriaController {
 		}
 		modelo.addAttribute("user", user);
 		modelo.addAttribute("titulo", titulo);
-		return "userForm";
+		return "registroUsuario";
 	}
 	
 	@RequestMapping(value="registrarse")
-	public String registrarUsuario(Model modelo,@Valid @ModelAttribute("user") Usuario user, BindingResult result) throws MessagingException {
+	public String registrarUsuario(Model modelo,@Valid @ModelAttribute("user") Usuario user,HttpSession session, BindingResult result) throws MessagingException {
 		
 		if(result.hasErrors()) {
 			modelo.addAttribute("user", user);
 			modelo.addAttribute("titulo", "Formulario de registro");
-			return "userForm";
+			return "registroUsuario";
 		}
 		else {
 			try {
@@ -320,16 +320,27 @@ public class PerfumeriaController {
 					cuerpo += "</table>";
 					
 					helper.setText(cuerpo, true);
+						
+						
+						usuario = dao.iniciarSesion(user.getUsuario(), user.getContrasenia());
+						
+						
+						if(usuario !=null) {							
+							session.setAttribute("username", user.getUsuario());
+							session.setAttribute("usuario", usuario);
+						}
 					
-					emailSender.send(mimeMessage);
+					
+					//emailSender.send(mimeMessage);
+					
 					
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
 				modelo.addAttribute("user", user);
 				modelo.addAttribute("titulo", "Formulario de registro");
-				modelo.addAttribute("error", "Ya existe el nombre usuario, introduce otro");
-				return "userForm";
+				modelo.addAttribute("error", "Ya existe el nombre de usuario, por favor, introduce otro");
+				return "registroUsuario";
 			}
 			
 			return "redirect:/todaPerfumeria";
@@ -343,7 +354,7 @@ public class PerfumeriaController {
 		if(result.hasErrors()) {
 			modelo.addAttribute("user", user);
 			modelo.addAttribute("titulo", "Editar usuario");
-			return "userForm";
+			return "registroUsuario";
 		}
 		else {
 			if(dao.modificarUsuario(user)==1) {

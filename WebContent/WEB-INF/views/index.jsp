@@ -18,26 +18,18 @@
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
 <!-- CSS here -->
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/flaticon.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/slicknav.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/animate.min.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/magnific-popup.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/fontawesome-all.min.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/themify-icons.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/flaticon.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/slicknav.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/animate.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/themify-icons.css">
 <link rel="stylesheet" href="/Perfumeria/resources/assets/css/slick.css">
-<link rel="stylesheet"
-	href="/Perfumeria/resources/assets/css/nice-select.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/nice-select.css">
 <link rel="stylesheet" href="/Perfumeria/resources/assets/css/style.css">
+
 </head>
 
 <body>
@@ -63,37 +55,47 @@
 				<div class="header-top top-bg d-none d-lg-block">
 					<div class="container-fluid">
 						<div class="col-xl-12">
-							<div
-								class="row d-flex justify-content-between align-items-center">
+							<div class="row d-flex justify-content-between align-items-center">
 								<div class="header-info-left d-flex">
 									<div class="flag">
-										<img
-											src="/Perfumeria/resources/assets/img/icon/header_icon.png"
-											alt="">
+										<img src="/Perfumeria/resources/assets/img/icon/" alt="">
 									</div>
-									<div class="select-this">
-										<form action="#">
-											<div class="select-itms">
-												<select name="select" id="select1">
-													<option value="">USA</option>
-													<option value="">SPN</option>
-													<option value="">CDA</option>
-													<option value="">USD</option>
-												</select>
-											</div>
-										</form>
-									</div>
+									
 									<ul class="contact-now">
-										<li>+777 2345 7886</li>
+										<li>+34 655 897 889</li>
 									</ul>
 								</div>
 								<div class="header-info-right">
 									<ul>
-										<li><a href="login.html">My Account </a></li>
+										<c:if test="${sessionScope.username != null}">
+										<li class="nav-item"><a class="nav-link" href="/Perfumeria/irUserForm">${sessionScope.username}</a></li>
+											<c:if test="${sessionScope.username == 'admin'}">
+												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
+											</c:if>
+										</c:if>
+										<c:if test="${sessionScope.username == null}">
+											<li class="nav-item"><a class="nav-link" href="/Perfumeria/login">Iniciar Sesi&oacuten</a></li>
+											<li class="nav-item"><a class="nav-link" href="/Perfumeria/irRegistroUsuario">Registrarse</a></li>
+										</c:if>
+										<!-- <li><a href="login.html">My Account </a></li> -->
 										<li><a href="product_list.html">Wish List </a></li>
 										<li><a href="cart.html">Shopping</a></li>
 										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
+										<c:if test="${sessionScope.username != null}">
+										<li class="nav-item"><a class="nav-link" href="/Perfumeria/cerrarSesion">Cerrar Sesi&oacuten</a></li>
+											<c:if test="${sessionScope.username == 'admin'}">
+												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
+											</c:if>
+										</c:if>
+										
+										
+										<li class="nav-item">
+											<a class="nav-link" href="/Perfumeria/verCarrito">
+												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
+												class="d-inline-block align-top" width=30 height=30>
+													Carrito(${fn:length(sessionScope.carrito)})
+											</a>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -106,8 +108,7 @@
 							<!-- Logo -->
 							<div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
 								<div class="logo">
-									<a href="index.html"><img
-										src="/Perfumeria/resources/assets/img/logo/logo.png" alt=""></a>
+									<a href="index.html"><img src="/Perfumeria/resources/assets/img/logo/logo.png" alt=""></a>
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
@@ -120,7 +121,7 @@
 												<ul class="submenu">
 													<li><a href="/Perfumeria/verSexoCategoria/Hombres/Cuidado">Cuidado Hombre</a></li>
 													<li><a href="/Perfumeria/verSexoCategoria/Hombres/Perfumes">Perfumes Hombre</a>
-													<li><a href="/Perfumeria/verSexoCategoria/Mujeres/Mquillaje">Maquillajes</a></li>
+													<li><a href="/Perfumeria/verSexoCategoria/Mujeres/Maquillaje">Maquillajes</a></li>
 													<li><a href="/Perfumeria/verSexoCategoria/Hombres/Perfumes">Perfumes Mujer</a></li>
 												</ul>
 											</li>
@@ -156,7 +157,7 @@
 									<li class="d-none d-xl-block">
 										<div class="form-box f-right ">
 											<input type="text" name="Search"
-												placeholder="Search products">
+												placeholder="">
 											<div class="search-icon">
 												<i class="fas fa-search special-tag"></i>
 											</div>
@@ -166,16 +167,17 @@
 										<div class="favorit-items">
 											<i class="far fa-heart"></i>
 										</div>
-									</li>
-									<li>
+									</li> 
+									
+									<!-- <li>
 										<div class="shopping-card">
 											<a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
 										</div>
-									</li>
-									<li class="d-none d-lg-block"><a href="#"
-										class="btn header-btn">Sign in</a></li>
+									</li> -->
+									
 								</ul>
 							</div>
+							
 							<!-- Mobile Menu -->
 							<div class="col-12">
 								<div class="mobile_menu d-block d-lg-none"></div>
@@ -195,33 +197,25 @@
 			<!-- Mobile Menu -->
 			<div class="slider-active">
 				<div class="single-slider slider-height"
-					data-background="/Perfumeria/resources/assets/img/hero/h1_hero.jpg">
+					data-background="/Perfumeria/resources/assets/img/maquillaje-1.jpg">
 					<div class="container">
 						<div class="row d-flex align-items-center justify-content-between">
-							<div
-								class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-none d-md-block">
-								<div class="hero__img" data-animation="bounceIn"
-									data-delay=".4s">
-									<img src="/Perfumeria/resources/assets/img/hero/hero_man.png"
-										alt="">
-								</div>
-							</div>
 							<div class="col-xl-5 col-lg-5 col-md-5 col-sm-8">
 								<div class="hero__caption">
-									<span data-animation="fadeInRight" data-delay=".4s">60%
-										Discount</span>
-									<h1 data-animation="fadeInRight" data-delay=".6s">
+									<span style="color:#626567 !important" data-animation="fadeInRight" data-delay=".4s">60% Discount</span>
+									<h1 style="color: #4A235A!important" data-animation="fadeInRight" data-delay=".6s">
 										Winter <br> Collection
 									</h1>
-									<p data-animation="fadeInRight" data-delay=".8s">Best Cloth
+									<p style="color:#626567 !important"data-animation="fadeInRight" data-delay=".8s">Best Cloth
 										Collection By 2020!</p>
 									<!-- Hero-btn -->
-									<div class="hero__btn" data-animation="fadeInRight"
+									<!-- div class="hero__btn" data-animation="fadeInRight"
 										data-delay="1s">
 										<a href="industries.html" class="btn hero-btn">Compra ahora</a>
-									</div>
+									</div> -->
 								</div>
 							</div>
+							<div class="col-12"></div>
 						</div>
 					</div>
 				</div>
@@ -265,7 +259,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section-tittle text-center mb-85">
-							<h2>&#161Compra por categoria!</h2>
+							<h2 style="color:#626567 !important">&#161Compra por categoria!</h2>
 						</div>
 					</div>
 				</div>
@@ -273,34 +267,23 @@
 					<div class="col-xl-6 col-lg-6">
 						<div class="single-category mb-30">
 							<div class="category-img">
-								<img src="/Perfumeria/resources/assets/img/perfume.jpg" alt="">
+								<a tittle="Mujeres" href="/Perfumeria/verCategoria/Mujeres">
+								<img src="/Perfumeria/resources/assets/img/perfume.jpg" alt="Mujeres">
+								</a>
 								<div class="category-caption">
-									<h2 align="right">Mujer</h2>
-									<span class="best" ><a href="/Perfumeria/verCategoria/Mujeres">Shop now</a></span> 
+									<h1 style="color: #424949 !important">Mujer</h1>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!--  div class="col-xl-4 col-lg-6">
-						<div class="single-category mb-30">
-							<div class="category-img text-center">
-								<img src="/Perfumeria/resources/assets/img/categori/cat2.jpg"
-									alt="">
-								<div class="category-caption">
-									<span class="collection">Discount!</span>
-									<h2>Winter Cloth</h2>
-									<p>New Collection</p>
-								</div>
-							</div>
-						</div>
-					</div-->
 					<div class="col-xl-6 col-lg-6">
 						<div class="single-category mb-30">
 							<div class="category-img">
-								<img src="/Perfumeria/resources/assets/img/hombre.jpg" alt="">
+								<a tittle="Hombre" href="/Perfumeria/verCategoria/Hombres">
+								<img src="/Perfumeria/resources/assets/img/hombre.jpg" alt="Hombre">
+								</a>
 								<div class="category-caption">
-									<h2>Hombre</h2>
-									<span class="best"><a href="/Perfumeria/verCategoria/Hombres">Shop now</a></span>
+									<h1 style="color: #424949 !important">Hombre</h1>
 								</div>
 							</div>
 						</div>
@@ -315,9 +298,9 @@
 				<div
 					class="row product-btn d-flex justify-content-end align-items-end">
 					<!-- Section Tittle -->
-					<div class="col-xl-4 col-lg-5 col-md-5">
-						<div class="section-tittle mb-30">
-							<h2>Latest Products</h2>
+					<div class="col-lg-12">
+						<div class="section-tittle text-center mb-85">
+							<h2 style="color:#626567 !important">&#161Todos los productos!</h2>
 						</div>
 					</div>
 					<div class="col-xl-8 col-lg-7 col-md-7">
@@ -369,7 +352,8 @@
 											<a href="#">${productos.marca}</a></br>
 											<a>${productos.nombre}</a></br>
 											</br>
-											<p>${productos.descripcion}</p>
+											<!-- a href= "${productos.descripcion}">Ver descripci&oacuten</a> -->
+											<p align="justify">${productos.descripcion}</p>
 										</h4>
 										
 										<div class="price">
@@ -382,505 +366,9 @@
 								</div>
 							</div>
 							</c:forEach>
-							
 						</div>
 					</div>
-					<!-- Card two -->
-					<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-						aria-labelledby="nav-profile-tab">
-						<div class="row">
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product4.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product5.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product6.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product2.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product3.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product1.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card three -->
-					<div class="tab-pane fade" id="nav-contact" role="tabpanel"
-						aria-labelledby="nav-contact-tab">
-						<div class="row">
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product2.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product3.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product1.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product4.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product6.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product5.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- card foure -->
-					<div class="tab-pane fade" id="nav-last" role="tabpanel"
-						aria-labelledby="nav-last-tab">
-						<div class="row">
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product1.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product2.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product3.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product4.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product5.png"
-											alt="">
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single-product mb-60">
-									<div class="product-img">
-										<img
-											src="/Perfumeria/resources/assets/img/categori/product6.png"
-											alt="">
-										<div class="new-product">
-											<span>New</span>
-										</div>
-									</div>
-									<div class="product-caption">
-										<div class="product-ratting">
-											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
-												class="far fa-star"></i> <i class="far fa-star low-star"></i>
-											<i class="far fa-star low-star"></i>
-										</div>
-										<h4>
-											<a href="#">Green Dress with details</a>
-										</h4>
-										<div class="price">
-											<ul>
-												<li>$40.00</li>
-												<li class="discount">$60.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+					
 				<!-- End Nav Card -->
 			</div>
 		</section>

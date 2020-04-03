@@ -3490,8 +3490,8 @@ input:focus {
 
 /* line 50, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-area .header-top .header-info-left .contact-now li {
-  color: #fff;
-  font-size: 14px;
+  color: #a6acaf!important;
+  font-size: 18px;
   text-transform: capitalize;
 }
 
@@ -3503,9 +3503,9 @@ input:focus {
 /* line 61, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-area .header-top .header-info-right ul li a {
   padding-left: 36px;
-  font-size: 14px;
+  font-size: 18px;
   text-transform: capitalize;
-  color: #fff;
+  color: #a6acaf!important;
 }
 
 /* line 79, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
@@ -3518,7 +3518,7 @@ input:focus {
 /* line 84, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-bottom .main-menu ul li a {
   font-size: 16px;
-  color: #000000;
+  color: #626567;
   display: inline-block;
   text-transform: capitalize;
   padding: 39px 18px;
@@ -3547,7 +3547,7 @@ input:focus {
 
 /* line 102, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-bottom .main-menu ul li:hover > a {
-  color: #ff003c;
+  color:purple;;
 }
 
 /* line 106, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
@@ -3782,7 +3782,7 @@ input:focus {
 
 /* line 293, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .top-bg {
-  background: #000000;
+  background: #4A235A!important;
 }
 
 /* line 300, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
@@ -3868,6 +3868,8 @@ input:focus {
 /* line 368, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-area .flag {
   padding-top: 8px;
+  heigth:5px;
+  width:2px;
 }
 
 /* line 373, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
@@ -3992,8 +3994,8 @@ input:focus {
 @media (max-width: 767px) {
   /* line 63, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_h1-hero.scss */
   .slider-area .hero__caption {
-    padding-top: 38px;
-    padding-left: 22px;
+    padding-top: 50px;
+    padding-right: 22px;
   }
 }
 
@@ -4003,11 +4005,13 @@ input:focus {
   color: #2577fd;
   font-size: 40px;
   display: inline-block;
+  
 }
 
 /* line 74, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_h1-hero.scss */
 .slider-area .hero__caption h1 {
-  color: #1f2022;
+	
+  color: red;
   font-family: "Playfair Display", serif;
   text-transform: uppercase;
   font-size: 100px;
@@ -4015,6 +4019,7 @@ input:focus {
   line-height: 1.1;
   text-transform: capitalize;
   margin-bottom: 13px;
+  text-align:rigth!important;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -4202,6 +4207,7 @@ input:focus {
 /* line 13, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_category.scss */
 .category-area .single-category .category-img {
   position: relative;
+  opacity:0.8;
 }
 
 /* line 14, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_category.scss */
@@ -4213,7 +4219,7 @@ input:focus {
 /* line 19, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_category.scss */
 .category-area .single-category .category-img .category-caption {
   position: absolute;
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%);
   right: 52px;
 }
@@ -4474,7 +4480,7 @@ input:focus {
   display: block;
   color: #8f8f96;
   text-transform: capitalize;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 /* line 106, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_latest_products.scss */
@@ -13025,5 +13031,12 @@ input:focus {
     font-size: 30px;
   }
 }
+ 
+.btn-md:hover{
+	opacity:0.7;
+	background-color:#bb8fce!important;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */

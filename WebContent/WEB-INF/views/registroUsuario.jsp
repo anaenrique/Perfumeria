@@ -1,9 +1,8 @@
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-	<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	
 <!doctype html>
 <html lang="zxx">
@@ -62,7 +61,7 @@
 										</c:if>
 										<c:if test="${sessionScope.username == null}">
 											<li class="nav-item"><a class="nav-link" href="/Perfumeria/login">Iniciar Sesi&oacuten</a></li>
-											<li class="nav-item"><a class="nav-link" href="/Perfumeria/irRegistroUsuario">Registrarse</a></li>
+											<li class="nav-item"><a class="nav-link" href="/Perfumeria/registroUsuario">Registrarse</a></li>
 										</c:if>
 										<!-- <li><a href="login.html">My Account </a></li> -->
 										<li><a href="product_list.html">Wish List </a></li>
@@ -78,7 +77,7 @@
 											<a class="nav-link" href="/Perfumeria/verCarrito">
 												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
 												class="d-inline-block align-top" width=30 height=30>
-													Carrito(${fn:length(sessionScope.carrito)})
+													
 											</a>
 										</li>
 									</ul>
@@ -183,7 +182,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h1 style="color:  #76448a !important">Iniciar Sesi&oacuten</h1>
+                            <h1 style="color:  #76448a !important">Registrarse</h1>
                         </div>
                     </div>
                 </div>
@@ -197,41 +196,43 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
-                    <div class="login_part_text text-center">
-                        <div class="login_part_text_iner">
-                            <h2>¿Nuevo en nuestra tienda?</h2>
-                            <p>Todos los días se hacen avances en ciencia y tecnología, y esto esun buen ejemplo</p>
-                            <a href="/Perfumeria/irRegistroUsuario" class="btn_3">Crear una cuenta</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
+                    	<c:if test="${sessionScope.usuario == null}" >
+	             		 <c:if test="${error!=null}"></c:if>
                         <div class="login_part_form_iner">
-                            <h3 style="color:  #76448a !important">Bienvenido de nuevo! <br>Por favor, inicia sesi&oacuten</h3>
-                            	<c:if test="${error!=null}">
+                        	
+                            <h3 style="color:  #76448a !important">Bienvenido a nuestra tienda! <br>Por favor, rellene los campos para poder registrarse e iniciar sesi&oacuten</h3>
 	                            <div class="alert alert-danger" role="alert">${error}</div>
-	                            </c:if>
-                                <form class="row contact_form" action="acceder" method="post" novalidate="novalidate">
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Usuario">
+	                            
+	                            <form:form commandName="user" method="post" action="/Perfumeria/registrarse">
+								    <div class="form-group">
+								      <form:input path="nombre" type="text" placeholder="Nombre" class="form-control"/>
+								      <form:errors path="nombre" cssClass="error" style="color:red" />
+								    </div>
+								    <div class="form-group">
+								      <form:input path="usuario"  type="text" placeholder="Usuario" class="form-control"/>
+								      <form:errors path="usuario" cssClass="error" style="color:red" />
+								    </div>
+								    <div class="form-group">
+								      <form:input path="contrasenia" type="password" placeholder="Contraseña" class="form-control"/>
+								      <form:errors path="contrasenia" cssClass="error" style="color:red" />
+								    </div>
+								    <div class="form-group">
+								      <form:input path="email" type="email" placeholder="Email" class="form-control"/>
+								      <form:errors path="email" cssClass="error" style="color:red" />
+								  </div>
+								  <div class="col-md-12 form-group">
+                                    <input type="submit" name="submit" value="Enviar" class="btn btn-md" value="submit" style="background-color: #800080; color:white;"></br></br>
+                                   	<a href="/Perfumeria/todaPerfumeria" class="btn btn-md"  style="background-color: #800080!important; color:white!important;">Volver a la Tienda</a>
                                 </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <!--  div class="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="selector">
-                                        <label for="f-option">Remember me</label>
-                                    </div>-->
-                                    <input type="submit" name="submit" value="Aceptar" class="btn btn-md" value="submit" style="background-color: #800080; color:white;">
-                                   
-                                    <!--  a class="lost_pass" href="#">forget password?</a>-->
-                                </div>
-                            </form>
+								  
+						     </form:form>	
+						     </div>
+                          </c:if>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 col-md-6"></div>
             </div>
         </div>
     </section>

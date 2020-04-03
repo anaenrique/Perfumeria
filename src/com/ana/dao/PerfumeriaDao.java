@@ -79,7 +79,7 @@ public class PerfumeriaDao {
 						rs.getString(8),
 						rs.getInt(9),
 						rs.getInt(10));	
-				System.out.println("hola");
+				
 				return p;
 				}
 			});
@@ -135,11 +135,11 @@ public class PerfumeriaDao {
 
 	public int registrarUsuario(Usuario user) {
 		return  template.update("insert into usuario(usuario, nombre, contrasenia, email) values (?,?,?,?)",
-				user.getUsuario(), user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
+				 user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
 	}
 	
 	public int modificarUsuario(Usuario user) {
-		return  template.update("update usuarior set usuario=?, nombre=?, contrasenia=?, email=? where usuario=?",
+		return  template.update("update usuario set usuario=?, nombre=?, contrasenia=?, email=? where usuario=?",
 				user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
 	}
 
