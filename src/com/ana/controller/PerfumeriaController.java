@@ -269,6 +269,55 @@ public class PerfumeriaController {
 		return new ModelAndView("redirect:/todaPerfumeria");
 	}
 	
+	@RequestMapping(value="agregarListaDeseos/{id_producto}")
+	public ModelAndView agregarListaDeseos(@PathVariable int id_producto, HttpSession session) {
+		
+		Productos p = dao.buscarProducto(id_producto);
+		List<Productos> ListaDeseos;
+		if(session.getAttribute("ListaDeseos")!=null) {
+			ListaDeseos = (List<Productos>) session.getAttribute("ListaDeseos");
+			ListaDeseos.add(p);
+			session.setAttribute("ListaDeseos", ListaDeseos);
+		}
+		else {
+			ListaDeseos = new ArrayList<Productos>();
+			ListaDeseos.add(p);
+			session.setAttribute("ListaDeseos", ListaDeseos);
+		}
+		
+		return new ModelAndView("redirect:/todaPerfumeria");
+	}
+	
+	@RequestMapping(value="verListaDeseos")
+	public ModelAndView verListaDeseos(HttpSession session) {
+		
+		ModelAndView modelo=null;
+		
+		if(session.getAttribute("usuario")!=null) {
+			modelo = new ModelAndView("ListaDeseos");
+		}
+		else {
+			modelo = new ModelAndView("login");
+			String error = "Inicia sesión para ver la lista de deseos";
+			modelo.addObject("error", error);
+		}
+		return modelo;
+	}
+	
+	@RequestMapping(value="quitarListaDeseos/{id_producto}")
+	public ModelAndView quitarListaDeseos(@PathVariable int id_producto, HttpSession session) {
+		
+		List<Productos> ListaDeseos;
+		if(session.getAttribute("ListaDeseos")!=null) {
+			ListaDeseos = (List<Productos>) session.getAttribute("ListaDeseos");
+			ListaDeseos.remove(id_producto);
+			session.setAttribute("ListaDeseos", ListaDeseos);
+		}
+		
+		return new ModelAndView("redirect:/verListaDeseos");
+	}
+	
+	
 	@RequestMapping(value="irRegistroUsuario")
 	public String mostrarRegistroUsuario(Model modelo, HttpSession session) {
 		Usuario user = new Usuario();

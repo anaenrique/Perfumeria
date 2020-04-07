@@ -41,7 +41,7 @@
 			<div class="preloader-inner position-relative">
 				<div class="preloader-circle"></div>
 				<div class="preloader-img pere-text">
-					<img src="/Perfumeria/resources/assets/img/logo/logo.png" alt="">
+					<img src="/Perfumeria/resources/assets/img/logo/LogoPerfumeria.PNG" width=300 heigh=450 alt="">
 				</div>
 			</div>
 		</div>
@@ -58,7 +58,7 @@
 							<div class="row d-flex justify-content-between align-items-center">
 								<div class="header-info-left d-flex">
 									<div class="flag">
-										<img src="/Perfumeria/resources/assets/img/icon/" alt="">
+										<img src="/Perfumeria/resources/assets/img/icon/Spain.jpg" width=30 heigh=30 alt="">
 									</div>
 									
 									<ul class="contact-now">
@@ -78,24 +78,21 @@
 											<li class="nav-item"><a class="nav-link" href="/Perfumeria/irRegistroUsuario">Registrarse</a></li>
 										</c:if>
 										<!-- <li><a href="login.html">My Account </a></li> -->
-										<li><a href="product_list.html">Wish List </a></li>
-										<li><a href="cart.html">Shopping</a></li>
-										<li><a href="cart.html">Cart</a></li>
+										<li><a href="/Perfumeria/verListaDeseos">Lista de Deseos</a></li>
+										<li><a href="/Perfumeria/verCarrito">Carrito</a></li>
 										<c:if test="${sessionScope.username != null}">
 										<li class="nav-item"><a class="nav-link" href="/Perfumeria/cerrarSesion">Cerrar Sesi&oacuten</a></li>
 											<c:if test="${sessionScope.username == 'admin'}">
 												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
 											</c:if>
 										</c:if>
-										
-										
-										<li class="nav-item">
+										<!-- li class="nav-item">
 											<a class="nav-link" href="/Perfumeria/verCarrito">
 												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
 												class="d-inline-block align-top" width=30 height=30>
-													Carrito(${fn:length(sessionScope.carrito)})
+													(${fn:length(sessionScope.carrito)})
 											</a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -108,14 +105,15 @@
 							<!-- Logo -->
 							<div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
 								<div class="logo">
-									<a href="index.html"><img src="/Perfumeria/resources/assets/img/logo/logo.png" alt=""></a>
-								</div>
+									<a href="index.html"><img src="/Perfumeria/resources/assets/img/logo/LogoPerfumeria.PNG" width=250px heigth=300px style="margin-left: -40%"alt=""></a>
+								</div> 
 							</div>
 							<div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
 								<!-- Main-menu -->
 								<div class="main-menu f-right d-none d-lg-block">
 									<nav>
-										<ul id="navigation">
+										<ul id="navigation" >
+											
 											<li><a href="/Perfumeria/todaPerfumeria">Inicio</a></li>
 											<li class=""><a href="/Perfumeria/verSexoCategoria/">Categorias</a>
 												<ul class="submenu">
@@ -147,37 +145,37 @@
 													<li><a href="checkout.html">Product Checkout</a></li>
 												</ul></li>
 											<li><a href="contact.html">Contact</a></li>
+											
 										</ul>
 									</nav>
 								</div>
 							</div>
 							<div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
-								<ul
-									class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+								<ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
 									<li class="d-none d-xl-block">
-										<div class="form-box f-right ">
-											<input type="text" name="Search"
-												placeholder="">
+										<div class="form-box f-right" style="margin:20%">
+											<input type="text" name="Search" placeholder="">
 											<div class="search-icon">
 												<i class="fas fa-search special-tag"></i>
 											</div>
 										</div>
-									</li>
-									<li class=" d-none d-xl-block">
-										<div class="favorit-items">
-											<i class="far fa-heart"></i>
-										</div>
-									</li> 
-									
-									<!-- <li>
-										<div class="shopping-card">
-											<a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										</div>
-									</li> -->
-									
-								</ul>
+									 </li>
+										<li class=" d-none d-xl-block">
+											<a class="nav-link" href="/Perfumeria/verListaDeseos" tittle="Ver lista de deseos">
+												<img alt="Ver la lista de deseos" src="/Perfumeria/resources/assets/img/corazon.jpg" width=30 height=30 style="margin-top:10%">
+												<p>Lista Deseos(${fn:length(sessionScope.ListaDeseos)})</p>
+											</a>
+										</li>
+										<li class="d-none d-xl-block">
+											<a class="nav-link" href="/Perfumeria/verCarrito">
+												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
+												class="d-inline-block align-top" width=40 height=40 style="margin-top:8%">
+												<p>Carrito (${fn:length(sessionScope.carrito)})</p>
+											</a>
+										</li>
+									 </ul>	
+								</div>
 							</div>
-							
 							<!-- Mobile Menu -->
 							<div class="col-12">
 								<div class="mobile_menu d-block d-lg-none"></div>
@@ -186,12 +184,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		<!-- Header End -->
 	</header>
-
 	<main>
-
 		<!-- slider Area Start -->
 		<div class="slider-area ">
 			<!-- Mobile Menu -->
@@ -337,7 +332,8 @@
 							<div class="col-xl-4 col-lg-4 col-md-6">
 								<div class="single-product mb-60">
 									<div class="product-img">
-										<img width="200" height="350" src="${productos.imagen}">
+										<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">
+										<img width="200" height="350" src="${productos.imagen}"></a>
 										<div class="new-product">
 											<span>New</span>
 										</div>
@@ -349,10 +345,11 @@
 											<i class="far fa-star low-star"></i>
 										</div>
 										<h4>
-											<a href="#">${productos.marca}</a></br>
-											<a>${productos.nombre}</a></br>
+											<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">${productos.marca}</a></br>
+											<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">${productos.nombre}</a></br>
+											<a href="/Perfumeria/agregarListaDeseos" tittle="Agregar a la lista de deseos"><img alt="Agregar a la lista de deseos" src="/Perfumeria/resources/assets/img/corazon.jpg" width=30 height=30"></a>
+											
 											</br>
-											<!-- a href= "${productos.descripcion}">Ver descripci&oacuten</a> -->
 											<p align="justify">${productos.descripcion}</p>
 										</h4>
 										

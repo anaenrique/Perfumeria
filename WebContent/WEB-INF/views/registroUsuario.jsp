@@ -1,38 +1,53 @@
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!doctype html>
-<html lang="zxx">
-
+<html class="no-js" lang="zxx">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>eCommerce HTML-5 Template </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+<!--  meta charset="utf-8">-->
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ /> 
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Perfumeria's Online</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="manifest" href="site.webmanifest">-->
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
- 	<!-- CSS here -->
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/flaticon.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/slicknav.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/animate.min.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/themify-icons.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/slick.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/nice-select.css">
-	<link rel="stylesheet" href="/Perfumeria/resources/assets/css/style.css">
+<!-- CSS here -->
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/flaticon.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/slicknav.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/animate.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/magnific-popup.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/themify-icons.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/slick.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/nice-select.css">
+<link rel="stylesheet" href="/Perfumeria/resources/assets/css/style.css">
 
 </head>
 
 <body>
-    
+
+	<!-- Preloader Start -->
+	<div id="preloader-active">
+		<div
+			class="preloader d-flex align-items-center justify-content-center">
+			<div class="preloader-inner position-relative">
+				<div class="preloader-circle"></div>
+				<div class="preloader-img pere-text">
+					<img src="/Perfumeria/resources/assets/img/logo/logo.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader Start -->
+
 	<header>
 		<!-- Header Start -->
 		<div class="header-area">
@@ -40,11 +55,10 @@
 				<div class="header-top top-bg d-none d-lg-block">
 					<div class="container-fluid">
 						<div class="col-xl-12">
-							<div
-								class="row d-flex justify-content-between align-items-center">
+							<div class="row d-flex justify-content-between align-items-center">
 								<div class="header-info-left d-flex">
 									<div class="flag">
-										<img src="/Perfumeria/resources/assets/img/icon/" alt="">
+										<img src="/Perfumeria/resources/assets/img/icon/Spain.jpg" width=30 heigh=30 alt="">
 									</div>
 									
 									<ul class="contact-now">
@@ -61,25 +75,24 @@
 										</c:if>
 										<c:if test="${sessionScope.username == null}">
 											<li class="nav-item"><a class="nav-link" href="/Perfumeria/login">Iniciar Sesi&oacuten</a></li>
-											<li class="nav-item"><a class="nav-link" href="/Perfumeria/registroUsuario">Registrarse</a></li>
+											<li class="nav-item"><a class="nav-link" href="/Perfumeria/irRegistroUsuario">Registrarse</a></li>
 										</c:if>
 										<!-- <li><a href="login.html">My Account </a></li> -->
-										<li><a href="product_list.html">Wish List </a></li>
-										<li><a href="cart.html">Shopping</a></li>
-										<li><a href="cart.html">Cart</a></li>
+										<li><a href="/Perfumeria/verListaDeseos">Lista de Deseos</a></li>
+										<li><a href="/Perfumeria/verCarrito">Carrito</a></li>
 										<c:if test="${sessionScope.username != null}">
 										<li class="nav-item"><a class="nav-link" href="/Perfumeria/cerrarSesion">Cerrar Sesi&oacuten</a></li>
 											<c:if test="${sessionScope.username == 'admin'}">
 												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
 											</c:if>
 										</c:if>
-										<li class="nav-item">
+										<!-- li class="nav-item">
 											<a class="nav-link" href="/Perfumeria/verCarrito">
 												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
 												class="d-inline-block align-top" width=30 height=30>
-													
+													(${fn:length(sessionScope.carrito)})
 											</a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -92,14 +105,15 @@
 							<!-- Logo -->
 							<div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
 								<div class="logo">
-									<a href="index.html"><img src="/Perfumeria/resources/assets/img/logo/logo.png" alt=""></a>
-								</div>
+									<a href="index.html"><img src="/Perfumeria/resources/assets/img/logo/LogoPerfumeria.PNG" width=250px heigth=300px style="margin-left: -40%"alt=""></a>
+								</div> 
 							</div>
 							<div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
 								<!-- Main-menu -->
 								<div class="main-menu f-right d-none d-lg-block">
 									<nav>
-										<ul id="navigation">
+										<ul id="navigation" >
+											
 											<li><a href="/Perfumeria/todaPerfumeria">Inicio</a></li>
 											<li class=""><a href="/Perfumeria/verSexoCategoria/">Categorias</a>
 												<ul class="submenu">
@@ -131,37 +145,37 @@
 													<li><a href="checkout.html">Product Checkout</a></li>
 												</ul></li>
 											<li><a href="contact.html">Contact</a></li>
+											
 										</ul>
 									</nav>
 								</div>
 							</div>
 							<div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
-								<ul
-									class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+								<ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
 									<li class="d-none d-xl-block">
-										<div class="form-box f-right ">
-											<input type="text" name="Search"
-												placeholder="">
+										<div class="form-box f-right" style="margin:20%">
+											<input type="text" name="Search" placeholder="">
 											<div class="search-icon">
 												<i class="fas fa-search special-tag"></i>
 											</div>
 										</div>
-									</li>
-									<li class=" d-none d-xl-block">
-										<div class="favorit-items">
-											<i class="far fa-heart"></i>
-										</div>
-									</li> 
-									
-									<!-- <li>
-										<div class="shopping-card">
-											<a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										</div>
-									</li> -->
-									
-								</ul>
+									 </li>
+										<li class=" d-none d-xl-block">
+											<a class="nav-link" href="/Perfumeria/verListaDeseos" tittle="Ver lista de deseos">
+												<img alt="Ver la lista de deseos" src="/Perfumeria/resources/assets/img/corazon.jpg" width=30 height=30 style="margin-top:10%">
+												<p>Lista Deseos(${fn:length(sessionScope.ListaDeseos)})</p>
+											</a>
+										</li>
+										<li class="d-none d-xl-block">
+											<a class="nav-link" href="/Perfumeria/verCarrito">
+												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
+												class="d-inline-block align-top" width=40 height=40 style="margin-top:8%">
+												<p>Carrito (${fn:length(sessionScope.carrito)})</p>
+											</a>
+										</li>
+									 </ul>	
+								</div>
 							</div>
-						
 							<!-- Mobile Menu -->
 							<div class="col-12">
 								<div class="mobile_menu d-block d-lg-none"></div>
@@ -170,9 +184,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		<!-- Header End -->
-	</header>
+</header>
 
     <!-- slider Area Start-->
     <div class="slider-area ">
@@ -182,7 +195,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h1 style="color:  #76448a !important">Registrarse</h1>
+                            <h1 style="color:#512e5f!important">Registrarse</h1>
                         </div>
                     </div>
                 </div>
@@ -197,13 +210,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_form">
-                    	<c:if test="${sessionScope.usuario == null}" >
-	             		 <c:if test="${error!=null}"></c:if>
                         <div class="login_part_form_iner">
-                        	
-                            <h3 style="color:  #76448a !important">Bienvenido a nuestra tienda! <br>Por favor, rellene los campos para poder registrarse e iniciar sesi&oacuten</h3>
-	                            <div class="alert alert-danger" role="alert">${error}</div>
-	                            
+                            <h3 style="color:  #76448a !important">Bienvenido a nuestra tienda! <br>Por favor, rellene los campos para poder registrarse e iniciar sesi&oacuten</h3> 
+	                            <c:if test="${sessionScope.usuario == null}" >
+								<c:if test="${error!=null}">
+							        <div class="alert alert-danger" role="alert">${error}</div>
+							     </c:if>
 	                            <form:form commandName="user" method="post" action="/Perfumeria/registrarse">
 								    <div class="form-group">
 								      <form:input path="nombre" type="text" placeholder="Nombre" class="form-control"/>
@@ -214,7 +226,7 @@
 								      <form:errors path="usuario" cssClass="error" style="color:red" />
 								    </div>
 								    <div class="form-group">
-								      <form:input path="contrasenia" type="password" placeholder="Contrase�a" class="form-control"/>
+								      <form:input path="contrasenia" type="password" placeholder="Contrase&ntilde;a" class="form-control"/>
 								      <form:errors path="contrasenia" cssClass="error" style="color:red" />
 								    </div>
 								    <div class="form-group">
@@ -225,16 +237,14 @@
                                     <input type="submit" name="submit" value="Enviar" class="btn btn-md" value="submit" style="background-color: #800080; color:white;"></br></br>
                                    	<a href="/Perfumeria/todaPerfumeria" class="btn btn-md"  style="background-color: #800080!important; color:white!important;">Volver a la Tienda</a>
                                 </div>
-								  
 						     </form:form>	
+						     </c:if>
 						     </div>
-                          </c:if>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6"></div>
             </div>
-        </div>
     </section>
     <!--================login_part end =================-->
 
