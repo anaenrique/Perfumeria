@@ -86,13 +86,6 @@
 												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
 											</c:if>
 										</c:if>
-										<!-- li class="nav-item">
-											<a class="nav-link" href="/Perfumeria/verCarrito">
-												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
-												class="d-inline-block align-top" width=30 height=30>
-													(${fn:length(sessionScope.carrito)})
-											</a>
-										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -190,12 +183,12 @@
   <!-- slider Area Start-->
   <div class="slider-area ">
     <!-- Mobile Menu -->
-    <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/hero/category.jpg">
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="/Perfumeria/resources/assets/img/hero/deseos.png">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="hero-cap text-center">
-                        <h2>Card List</h2>
+                        <h2>Lista de Deseos</h2>
                     </div>
                 </div>
             </div>
@@ -207,21 +200,19 @@
   <!--================Cart Area =================-->
   <section class="cart_area section_padding">
     <div class="container">
-    	<c:if test="${sessionScope.usuario!=null}">
+	 	    	<c:if test="${sessionScope.usuario!=null}">
       <div class="cart_inner">
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th scope="col">Producto</th>
-                <th scope="col">Descripci&oacuten</th>
                 <th scope="col">Precio</th>
-                <th scope="col">Eliminar</th>
-                <th scope="col">Añadir al carrito</th>
+                
               </tr>
             </thead>
             <tbody>
-              <c:forEach items="${sessionScope.listaDeseos}" var="productos" varStatus="index">  	
+            <c:forEach items="${sessionScope.ListaDeseos}" var="productos" varStatus="index"> 	
               <tr>
                 <td>
                   <div class="media">
@@ -231,22 +222,18 @@
                     <div class="media-body">
                       <p>${productos.nombre}</p>
                     </div>
-                    <div class="media-body">
-                      <p>${productos.descripcion}</p>
-                    </div>
                   </div>
                 </td>
                 <td>
                   <p>${productos.precio}&#8364</p>
                 </td>
-           		<td>
-                	<a href="/Perfumeria/agregarCarrito/${index.index}" class="btn btn-danger" >Añadir al carrito</a>
+                <td>
+                	<a href="/Perfumeria/agregarCarrito/${index.index}" class="btn_1" style="background-color: #800080; color:white;" >Agregar al carrito</a>
                 </td>
                 <td>
-                	<a href="/Perfumeria/quitarListaDeseos/${index.index}" class="btn btn-danger" >Eliminar</a>
+                	<a href="/Perfumeria/quitarListaDeseos/${index.index}" class="btn_1" style="background-color: #800080; color:white;">Eliminar</a>
                 </td>
-              </tr>
-              </c:forEach>
+                </c:forEach>	
             </tbody>
           </table>
           <div class="checkout_btn_inner float-right">
@@ -255,7 +242,7 @@
         </div>
         </div>
         </c:if>
-      </div>
+     </div>
   </section>
   <!--================End Cart Area =================-->
 

@@ -7,10 +7,9 @@
 
 <!doctype html>
 <html class="no-js" lang="zxx">
-<head>
-<!--  meta charset="utf-8">-->
-<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ /> 
+<head> 
 <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <title>Perfumeria's Online</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,13 +85,7 @@
 												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
 											</c:if>
 										</c:if>
-										<!-- li class="nav-item">
-											<a class="nav-link" href="/Perfumeria/verCarrito">
-												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
-												class="d-inline-block align-top" width=30 height=30>
-													(${fn:length(sessionScope.carrito)})
-											</a>
-										</li> -->
+										
 									</ul>
 								</div>
 							</div>
@@ -226,13 +219,21 @@
 								      <form:errors path="usuario" cssClass="error" style="color:red" />
 								    </div>
 								    <div class="form-group">
-								      <form:input path="contrasenia" type="password" placeholder="Contrase&ntilde;a" class="form-control"/>
+								      <form:input path="contrasenia" type="password" placeholder="Clave" class="form-control"/>
 								      <form:errors path="contrasenia" cssClass="error" style="color:red" />
 								    </div>
 								    <div class="form-group">
 								      <form:input path="email" type="email" placeholder="Email" class="form-control"/>
 								      <form:errors path="email" cssClass="error" style="color:red" />
-								  </div>
+								   </div>
+								   <div class="form-group">
+								      <form:input path="telefono" type="tel" placeholder="Telefono" class="form-control"/>
+								      <form:errors path="telefono" cssClass="error" style="color:red" />
+								    </div>
+								    <div class="form-group">
+								      <form:input path="NIF" type="text" placeholder="NIF AGJ2343" class="form-control"/>
+								      <form:errors path="NIF" cssClass="error" style="color:red" />
+								   </div>
 								  <div class="col-md-12 form-group">
                                     <input type="submit" name="submit" value="Enviar" class="btn btn-md" value="submit" style="background-color: #800080; color:white;"></br></br>
                                    	<a href="/Perfumeria/todaPerfumeria" class="btn btn-md"  style="background-color: #800080!important; color:white!important;">Volver a la Tienda</a>

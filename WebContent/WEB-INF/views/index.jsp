@@ -8,11 +8,8 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
-<!--  meta charset="utf-8">-->
-<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ /> 
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Perfumeria's Online</title>
-<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--<link rel="manifest" href="site.webmanifest">-->
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
@@ -30,6 +27,7 @@
 <link rel="stylesheet" href="/Perfumeria/resources/assets/css/nice-select.css">
 <link rel="stylesheet" href="/Perfumeria/resources/assets/css/style.css">
 
+<meta charset="utf-8">
 </head>
 
 <body>
@@ -86,13 +84,7 @@
 												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
 											</c:if>
 										</c:if>
-										<!-- li class="nav-item">
-											<a class="nav-link" href="/Perfumeria/verCarrito">
-												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
-												class="d-inline-block align-top" width=30 height=30>
-													(${fn:length(sessionScope.carrito)})
-											</a>
-										</li> -->
+										
 									</ul>
 								</div>
 							</div>
@@ -126,25 +118,19 @@
 											<li class="hot"><a href="#">Latest</a>
 												<ul class="submenu">
 													<li><a href="/Perfumeria/todaPerfumeria"> Product list</a></li>
-													<li><a href="single-product.html"> Product Details</a></li>
 												</ul>
 											</li>
-											<li><a href="blog.html">Blog</a>
+											<li><a href="contact.html">Contacto</a></li>
+											<li><a href="#">Todas las p&aacute;ginas</a>
 												<ul class="submenu">
-													<li><a href="blog.html">Blog</a></li>
-													<li><a href="single-blog.html">Blog Details</a></li>
-												</ul></li>
-											<li><a href="#">Pages</a>
-												<ul class="submenu">
-													<li><a href="login.html">Login</a></li>
-													<li><a href="cart.html">Card</a></li>
-													<li><a href="elements.html">Element</a></li>
-													<li><a href="about.html">About</a></li>
+													<li><a href="/Perfumeria/login">Iniciar Sesion</a></li>
+													<li><a href="/Perfumeria/irRegistroUsuario">Registrarse</a></li>
+													<li><a href="/Perfumeria/verListaDeseos">Lista de deseos</a></li>
+													<li><a href="/Perfumeria/verCarrito">Carrito de la compra</a></li>
 													<li><a href="confirmation.html">Confirmation</a></li>
-													<li><a href="cart.html">Shopping Cart</a></li>
 													<li><a href="checkout.html">Product Checkout</a></li>
 												</ul></li>
-											<li><a href="contact.html">Contact</a></li>
+											
 											
 										</ul>
 									</nav>
@@ -161,8 +147,8 @@
 										</div>
 									 </li>
 										<li class=" d-none d-xl-block">
-											<a class="nav-link" href="/Perfumeria/verListaDeseos" tittle="Ver lista de deseos">
-												<img alt="Ver la lista de deseos" src="/Perfumeria/resources/assets/img/corazon.jpg" width=30 height=30 style="margin-top:10%">
+											<a class="nav-link" href="/Perfumeria/verListaDeseos">
+												<img src="/Perfumeria/resources/assets/img/corazon.jpg" width=30 height=30 style="margin-top:10%">
 												<p>Lista Deseos(${fn:length(sessionScope.ListaDeseos)})</p>
 											</a>
 										</li>
@@ -203,11 +189,6 @@
 									</h1>
 									<p style="color:#626567 !important"data-animation="fadeInRight" data-delay=".8s">Best Cloth
 										Collection By 2020!</p>
-									<!-- Hero-btn -->
-									<!-- div class="hero__btn" data-animation="fadeInRight"
-										data-delay="1s">
-										<a href="industries.html" class="btn hero-btn">Compra ahora</a>
-									</div> -->
 								</div>
 							</div>
 							<div class="col-12"></div>
@@ -332,8 +313,32 @@
 							<div class="col-xl-4 col-lg-4 col-md-6">
 								<div class="single-product mb-60">
 									<div class="product-img">
-										<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">
-										<img width="200" height="350" src="${productos.imagen}"></a>
+										<img data-toggle="modal" data-target="#myModal${index.index}"  width="200" height="350" src="${productos.imagen}">
+											<!-- The Modal -->
+											<div class="modal" id="myModal${index.index}" style="z-index: 99999;">
+											  <div class="modal-dialog" >
+											    <div class="modal-content">
+											
+											      <!-- Modal Header -->
+											      <div class="modal-header">
+											        <h4 class="modal-title">&iquest;Qu&eacute; quieres hacer?</h4>
+											        <button type="button" class="close" data-dismiss="modal">&times;</button>
+											      </div>
+											
+											      <!-- Modal body -->
+											      <div class="modal-body">
+											        <img width="200" height="350" src="${productos.imagen}"/>
+											      </div>
+											
+											      <!-- Modal footer -->
+											      <div class="modal-footer">
+											        <a class="btn btn-md" href="/Perfumeria/agregarCarrito/${productos.id_producto}" style="background-color: #800080; color:white;">Agregar al carrito</a>
+											         <a class="btn btn-md" href="/Perfumeria/agregarListaDeseos/${productos.id_producto}" style="background-color: #800080; color:white;">Agregar a la lista de deseos</a>
+											      </div>
+											
+											    </div>
+											  </div>
+											</div>
 										<div class="new-product">
 											<span>New</span>
 										</div>
@@ -345,14 +350,11 @@
 											<i class="far fa-star low-star"></i>
 										</div>
 										<h4>
-											<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">${productos.marca}</a></br>
-											<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">${productos.nombre}</a></br>
-											<a href="/Perfumeria/agregarListaDeseos" tittle="Agregar a la lista de deseos"><img alt="Agregar a la lista de deseos" src="/Perfumeria/resources/assets/img/corazon.jpg" width=30 height=30"></a>
-											
-											</br>
-											<p align="justify">${productos.descripcion}</p>
+											<a style="text-decoration:none">${productos.marca}</a></br>
+											<a style="text-decoration:none">${productos.nombre}</a></br></br>
+											<a align="justify" id="ver${index.index}" type="text" onclick="descripcionClick('${index.index}')" style="cursor:pointer;">Ver descripci&oacute;n</></a></br></br>												
+											<p class="text-ellipsis" id="descripcion${index.index}"  style="text-decoration:none">${productos.descripcion}</p>											
 										</h4>
-										
 										<div class="price">
 											<ul>
 												<li>${productos.precio}&#8364</li>
@@ -671,7 +673,23 @@
 	</footer>
 
 	<!-- JS here -->
+<script>
 
+function descripcionClick(id) {
+	  var descripcion=$('#descripcion'+id);
+	  if(descripcion.hasClass("text-ellipsis"))
+		  {
+		  	descripcion.removeClass('text-ellipsis');
+		  	$('#ver'+id).text("Ver menos");
+		  }
+	  else
+		  {
+		  	descripcion.addClass('text-ellipsis');
+		  	$('#ver'+id).text("Ver descripcion");
+		  }
+    
+    }
+</script>
 	<!-- All JS Custom Plugins Link Here here -->
 	<script
 		src="/Perfumeria/resources/assets/js/vendor/modernizr-3.5.0.min.js"></script>

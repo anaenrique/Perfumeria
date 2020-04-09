@@ -3642,7 +3642,7 @@ input:focus {
 
 /* line 172, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-bottom .header-right .form-box input {
-  border: 10px solid #eeeeee;
+  border: 3px solid #eeeeee;
   border-radius: 30px;
   padding: 10px 20px;
   width: 100%;
@@ -3651,7 +3651,7 @@ input:focus {
 /* line 179, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_headerMenu.scss */
 .header-bottom .header-right .form-box .search-icon {
   position: absolute;
-  top: 12px;
+  top: 14px;
   right: 17px;
   
 }
@@ -4416,7 +4416,7 @@ input:focus {
 
 /* line 47, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_latest_products.scss */
 .latest-product-area .single-product h4 a:hover {
-  color: #ff003c;
+  color: Black;
 }
 
 /* line 54, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_latest_products.scss */
@@ -13039,6 +13039,15 @@ input:focus {
 	background-color:#bb8fce!important;
 }
 
+.text-ellipsis
+  {
+    text-align: left !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
 
+  }
 
 /*# sourceMappingURL=style.css.map */

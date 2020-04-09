@@ -244,37 +244,57 @@
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                            <div class="row">
 							<c:forEach items="${listaP}" var="productos" varStatus="index">
-							<div class="col-xl-4 col-lg-4 col-md-6">
+														<div class="col-xl-4 col-lg-4 col-md-6">
 								<div class="single-product mb-60">
 									<div class="product-img">
-										<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">
-										<img width="200" height="350" src="${productos.imagen}">
+										<img data-toggle="modal" data-target="#myModal${index.index}"  width="200" height="350" src="${productos.imagen}">
+											<!-- The Modal -->
+											<div class="modal" id="myModal${index.index}" style="z-index: 99999;">
+											  <div class="modal-dialog" >
+											    <div class="modal-content">
+											
+											      <!-- Modal Header -->
+											      <div class="modal-header">
+											        <h4 class="modal-title">&iquest;Qu&eacute; quieres hacer?</h4>
+											        <button type="button" class="close" data-dismiss="modal">&times;</button>
+											      </div>
+											
+											      <!-- Modal body -->
+											      <div class="modal-body">
+											        <img width="200" height="350" src="${productos.imagen}"/>
+											      </div>
+											
+											      <!-- Modal footer -->
+											      <div class="modal-footer">
+											        <a class="btn btn-md" href="/Perfumeria/agregarCarrito/${productos.id_producto}" style="background-color: #800080; color:white;">Agregar al carrito</a>
+											         <a class="btn btn-md" href="/Perfumeria/agregarListaDeseos/${productos.id_producto}" style="background-color: #800080; color:white;">Agregar a la lista de deseos</a>
+											      </div>
+											
+											    </div>
+											  </div>
+											</div>
 										<div class="new-product">
 											<span>New</span>
 										</div>
 									</div>
 									<div class="product-caption">
-									
 										<div class="product-ratting">
 											<i class="far fa-star"></i> <i class="far fa-star"></i> <i
 												class="far fa-star"></i> <i class="far fa-star low-star"></i>
 											<i class="far fa-star low-star"></i>
 										</div>
 										<h4>
-											<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">${productos.marca}</a></br>
-											<a href="/Perfumeria/agregarCarrito/${productos.id_producto}">${productos.nombre}</a></br>
-											</br>
-											<!-- a href= "${productos.descripcion}">Ver descripci&oacuten</a> -->
-											<p align="justify">${productos.descripcion}</p>
+											<a style="text-decoration:none">${productos.marca}</a></br>
+											<a style="text-decoration:none">${productos.nombre}</a></br></br>
+											<a align="justify" id="ver${index.index}" type="text" onclick="descripcionClick('${index.index}')" style="cursor:pointer;">Ver descripci&oacute;n</></a></br></br>											
+											<p class="text-ellipsis" id="descripcion${index.index}"  style="text-decoration:none">${productos.descripcion}</p>											
 										</h4>
-										
 										<div class="price">
 											<ul>
 												<li>${productos.precio}&#8364</li>
 												<li class="discount">$60.00</li>
 											</ul>
 										</div>
-										
 									</div>
 								</div>
 							</div>
@@ -459,7 +479,23 @@
    </footer>
    
 	<!-- JS here -->
+<script>
 
+function descripcionClick(id) {
+	  var descripcion=$('#descripcion'+id);
+	  if(descripcion.hasClass("text-ellipsis"))
+		  {
+		  	descripcion.removeClass('text-ellipsis');
+		  	$('#ver'+id).text("Ver menos");
+		  }
+	  else
+		  {
+		  	descripcion.addClass('text-ellipsis');
+		  	$('#ver'+id).text("Ver descripcion");
+		  }
+    
+    }
+</script>
 	<!-- All JS Custom Plugins Link Here here -->
 	<script
 		src="/Perfumeria/resources/assets/js/vendor/modernizr-3.5.0.min.js"></script>

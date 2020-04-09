@@ -93,11 +93,12 @@ public class PerfumeriaDao {
 			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// TODO Auto-generated method stub
 				Usuario u = new Usuario
-						(rs.getString(1),
+							   (rs.getString(1),
 								rs.getString(2),
 								rs.getString(3),
-								rs.getString(4),
-								rs.getString(5));
+								rs.getString(5),
+								rs.getInt(4),
+								rs.getString(6));
 						;
 					    
 				return u;
@@ -124,23 +125,23 @@ public class PerfumeriaDao {
 	}
 	
 	public int editarProducto(Productos p) {
-		return template.update("update productos set nombre=?, descripcion=?, imagen=?, categoria=?, precio=? where id_producto=?",
-								p.getNombre(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio(),p.getId_producto());
+		return template.update("update productos set nombre=?, marca=?, descripcion=?, imagen=?, categoria=?, precio=? where id_producto=?",
+								p.getNombre(),p.getMarca(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio(),p.getId_producto());
 	}
 
 	public int insertarProducto(Productos p) {
-		return  template.update("insert into productos(nombre,descripcion,imagen,categoria,precio) values (?,?,?,?,?)",
-								p.getNombre(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio());
+		return  template.update("insert into productos(nombre,marca, descripcion,imagen,categoria,precio) values (?,?,?,?,?,?)",
+								p.getNombre(),p.getMarca(),p.getDescripcion(),p.getImagen(),p.getCategoria(),p.getPrecio());
 	}
 
 	public int registrarUsuario(Usuario user) {
-		return  template.update("insert into usuario(usuario, nombre, contrasenia, email) values (?,?,?,?)",
-				 user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
+		return  template.update("insert into usuario(usuario, nombre, contrasenia, email, telefono, NIF) values (?,?,?,?,?,?)",
+				 user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail(), user.getTelefono(), user.getNIF());
 	}
 	
 	public int modificarUsuario(Usuario user) {
-		return  template.update("update usuario set usuario=?, nombre=?, contrasenia=?, email=? where usuario=?",
-				user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail());
+		return  template.update("update usuario set usuario=?, nombre=?, contrasenia=?, email=?, telefono=?, NIF=? where usuario=?",
+				user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail(), user.getTelefono(), user.getNIF());
 	}
 
 }

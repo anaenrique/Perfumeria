@@ -8,7 +8,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
-<!--  meta charset="utf-8">-->
+<meta charset="utf-8">
 <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ /> 
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Perfumeria's Online</title>
@@ -211,8 +211,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="login_part_text text-center">
                         <div class="login_part_text_iner">
-                            <h2>¿Nuevo en nuestra tienda?</h2>
-                            <p>Todos los días se hacen avances en ciencia y tecnología, y esto esun buen ejemplo</p>
+                            <h2>&iquest;Nuevo en nuestra tienda?</h2>
+                            <p>Todos los d&iacute;as se hacen avances en ciencia y tecnolog&iacute;a, y esto esun buen ejemplo</p>
                             <a href="/Perfumeria/irRegistroUsuario" class="btn_3">Crear una cuenta</a>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                                     <input type="text" class="form-control" id="username" name="username" placeholder="Usuario">
                                 </div>
                                 <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Contrase&ntilde;a">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <!--  div class="creat_account d-flex align-items-center">
