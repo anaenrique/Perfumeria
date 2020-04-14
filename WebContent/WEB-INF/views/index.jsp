@@ -130,8 +130,6 @@
 													<li><a href="confirmation.html">Confirmation</a></li>
 													<li><a href="checkout.html">Product Checkout</a></li>
 												</ul></li>
-											
-											
 										</ul>
 									</nav>
 								</div>
@@ -140,10 +138,12 @@
 								<ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
 									<li class="d-none d-xl-block">
 										<div class="form-box f-right" style="margin:20%">
-											<input type="text" name="Search" placeholder="">
+								           <form action="/Perfumeria/buscarProducto"  method="post">
+											<input type="text" name="search" placeholder="">
 											<div class="search-icon">
-												<i class="fas fa-search special-tag"></i>
+												<button type="submit" style="background:none; color:none; border:none;" ><i class="fas fa-search special-tag" ></i> </button>
 											</div>
+											</form>
 										</div>
 									 </li>
 										<li class=" d-none d-xl-block">
@@ -284,6 +284,21 @@
 							<!--Nav Button  -->
 							<nav>
 								<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<!-- paginación -->	
+								  <a>
+									  <c:set var="ind" value="0" scope="page" />
+							           <c:set var="ind2" value="0" scope="page" />
+								       <c:forEach items="${listaP}" var="item" varStatus="index">
+								           <c:if test="${ind2 == 6}">
+								              <a href="/Perfumeria/listadoProductos/${ind}" style="color:blue!important">${ind+1}</a> 
+								              <c:set var="ind" value="${ind + 1}" scope="page"/>
+								              <c:set var="ind2" value="0" scope="page"/>
+								          </c:if>
+								          <c:set var="ind2" value="${ind2 + 1}" scope="page"/>
+							       	 </c:forEach>
+								  </a>
+					           
+					      <!-- fin paginación -->
 									<a  href="/Perfumeria/todaPerfumeria" class="nav-item nav-link active" id="nav-home-tab"
 										data-toggle="tab" href="#nav-home" role="tab"
 										aria-controls="nav-home" aria-selected="true">All</a> 
@@ -297,6 +312,8 @@
 									<a class="nav-item nav-link" id="nav-last-tab"
 										data-toggle="tab" href="#nav-last" role="tab"
 										aria-controls="nav-contact" aria-selected="false">Offer</a>
+									
+									
 								</div>
 							</nav>
 							<!--End Nav Button  -->
@@ -365,6 +382,7 @@
 								</div>
 							</div>
 							</c:forEach>
+							
 						</div>
 					</div>
 					
@@ -483,7 +501,7 @@
 		<!-- Latest Offers Start -->
 		<div class="latest-wrapper lf-padding">
 			<div class="latest-area latest-height d-flex align-items-center"
-				data-background="assets/img/collection/latest-offer.png">
+				data-background="Pefumeria/resources/assets/img/collection/latest-offer.png">
 				<div class="container">
 					<div class="row d-flex align-items-center">
 						<div class="col-xl-5 col-lg-5 col-md-6 offset-xl-1 offset-lg-1">

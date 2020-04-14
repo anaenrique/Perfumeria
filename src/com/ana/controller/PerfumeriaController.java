@@ -27,6 +27,7 @@ import com.ana.modelo.Usuario;
 
 
 
+
 @Controller
 public class PerfumeriaController {
 	
@@ -46,13 +47,23 @@ public class PerfumeriaController {
 	@RequestMapping(value="/todaPerfumeria")
 	public ModelAndView mostrarTodo() {
 		List<Productos> listaP = dao.listarProductos();
-		//listaCarousel = dao.listarCarousel();
 		ModelAndView modelo = new ModelAndView("index");
 		System.out.println("Metodo mostrarTodo de PerfumeriaController");
 		modelo.addObject("listaP", listaP);
-		//modelo.addObject("listaCarousel", listaCarousel);
 		return modelo;
 	}
+	@RequestMapping(value="listadoProductos/{pageId}")
+	public ModelAndView listadoProductos(@PathVariable int pageId) {
+		int total=6;
+		pageId=(pageId)*total+1;
+		System.out.println("Comienza en: "+pageId);
+		List<Productos> listaFiltro = dao.listarProductosPorPaginas(pageId, total);
+		List <Productos> listaP=dao.listarProductos();
+		ModelAndView modelo=new ModelAndView("index");
+		  modelo.addObject("listaF",listaFiltro);
+		  modelo.addObject("listaP",listaP);
+		return modelo;
+	 }
 	
 	@RequestMapping(value="/verCategoria/{sexo}")
 	public ModelAndView mostrarSexo(@PathVariable String sexo) {
@@ -442,6 +453,16 @@ public class PerfumeriaController {
 			return "redirect:/todaPerfumeria";
 		}
 		
+	}
+	
+	//AQUI EL METODO DEL CONTROLLER
+	@RequestMapping(value="buscarProducto", method = RequestMethod.POST)
+	public ModelAndView buscarProductosNombre(@RequestParam("search") String nombre) {
+		List<Productos> listaC = dao.listarProductosNombre(nombre);
+		ModelAndView modelo = new ModelAndView("index");
+		System.out.println("Metodo buscarProductosNombre de PerfumeriaController, nombre: " + nombre);
+		modelo.addObject("listaP", listaC);
+		return modelo;
 	}
 		
 

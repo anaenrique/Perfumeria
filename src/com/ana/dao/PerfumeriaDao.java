@@ -46,6 +46,31 @@ public class PerfumeriaDao {
 		}
 		});
 	}
+	
+	public List<Productos> listarProductosPorPaginas(int Nitem, int total){
+		return template.query("select * from productos limit "+(Nitem-1)+","+total, new RowMapper<Productos>() {
+			@Override
+			public Productos mapRow(ResultSet rs, int row) throws SQLException
+			{
+				Productos p = new Productos 
+						(rs.getInt(1),
+					    rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getDouble(6),
+						rs.getString(7),
+						rs.getString(8),
+						rs.getInt(9),
+						rs.getInt(10));
+						
+				return p;
+			}
+			
+			
+		}
+		);
+	}
 	public List<Productos> listarSexo(String sexo){
 		return template.query("select * from productos where sexo='"+sexo+"'", new RowMapper<Productos>() {@Override
 			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -142,6 +167,30 @@ public class PerfumeriaDao {
 	public int modificarUsuario(Usuario user) {
 		return  template.update("update usuario set usuario=?, nombre=?, contrasenia=?, email=?, telefono=?, NIF=? where usuario=?",
 				user.getUsuario(), user.getNombre(), user.getContrasenia(), user.getEmail(), user.getTelefono(), user.getNIF());
+	}
+	
+	
+	//AQUI TIENES EL METODO PARA BUSCAR LOS PRODUCTOS POR NOMBRE
+	//He usado el LIKE porque si no hay que meter el nombre exacto del producto, asi lo veo mejor, pero cambialo si quieres por un =
+	public List<Productos> listarProductosNombre(String nombre){
+		
+		return template.query("select * from productos where nombre LIKE'%"+nombre+"%' or marca LIKE'%"+nombre+"%'", new RowMapper<Productos>() {@Override
+			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				Productos p = new Productos(rs.getInt(1),
+					    rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getDouble(6),
+						rs.getString(7),
+						rs.getString(8),
+						rs.getInt(9),
+						rs.getInt(10));	
+				
+				return p;
+				}
+			});
 	}
 
 }

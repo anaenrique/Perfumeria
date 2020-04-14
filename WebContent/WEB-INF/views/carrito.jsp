@@ -86,13 +86,6 @@
 												<li class="nav-item"><a class="nav-link" href="/Perfumeria/administracion">Administraci&oacuten</a></li>
 											</c:if>
 										</c:if>
-										<!-- li class="nav-item">
-											<a class="nav-link" href="/Perfumeria/verCarrito">
-												<img src="https://augustobrigadaw.000webhostapp.com/resources2/Carrito.png" 
-												class="d-inline-block align-top" width=30 height=30>
-													(${fn:length(sessionScope.carrito)})
-											</a>
-										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -154,10 +147,12 @@
 								<ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
 									<li class="d-none d-xl-block">
 										<div class="form-box f-right" style="margin:20%">
-											<input type="text" name="Search" placeholder="">
+											<form action="/Perfumeria/buscarProducto"  method="post">
+											<input type="text" name="search" placeholder="">
 											<div class="search-icon">
-												<i class="fas fa-search special-tag"></i>
+												<button type="submit" style="background:none; color:none; border:none;" ><i class="fas fa-search special-tag" ></i> </button>
 											</div>
+											</form>
 										</div>
 									 </li>
 										<li class=" d-none d-xl-block">
@@ -248,12 +243,11 @@
                 </td>
                 <td>
                 	<a href="/Perfumeria/quitarCarrito/${index.index}" class="btn btn-danger" >Eliminar</a>
+                	
                 </c:forEach>
-                </td>
+                
               
-              </tr>
-              
-              <tr class="bottom_button">
+              <!--tr class="bottom_button">
                 <td>
                   <a class="btn_1" href="#">Update Cart</a>
                 </td>
@@ -264,7 +258,7 @@
                     <a class="btn_1" href="#">Close Coupon</a>
                   </div>
                 </td>
-              </tr>
+              </tr-->
               <tr>
                 <td></td>
                 <td></td>
@@ -272,10 +266,10 @@
                   <h5>Subtotal</h5>
                 </td>
                 <td>
-                  <h5>$2160.00</h5>
+                  <h5>12</h5>
                 </td>
               </tr>
-              <tr class="shipping_area">
+              <!--tr class="shipping_area">
                 <td></td>
                 <td></td>
                 <td>
@@ -319,7 +313,7 @@
                     <a class="btn_1" href="#">Update Details</a>
                   </div>
                 </td>
-              </tr>
+              </tr-->
             </tbody>
           </table>
           <div class="checkout_btn_inner float-right">
